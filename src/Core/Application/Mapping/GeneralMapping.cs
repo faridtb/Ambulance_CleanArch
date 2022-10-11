@@ -13,7 +13,7 @@ namespace Application.Mapping
     {
         public GeneralMapping()
         {
-            CreateMap<Registration,RegistrationReturnDto>().ReverseMap()
+            CreateMap<Registration, RegistrationReturnDto>().ReverseMap();
         }
     }
 }

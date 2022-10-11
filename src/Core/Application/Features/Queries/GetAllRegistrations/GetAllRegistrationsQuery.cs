@@ -24,9 +24,15 @@ namespace Application.Features.Queries.GetAllRegistrations
                 this.registrationRepository = registrationRepository;
             }
 
-            public Task<List<RegistrationReturnDto>> Handle(GetAllRegistrationsQuery request, CancellationToken cancellationToken)
+            public async Task<List<RegistrationReturnDto>> Handle(GetAllRegistrationsQuery request, CancellationToken cancellationToken)
             {
-                var registrations = registrationRepository.GetAllAsync();
+                var registrations = await registrationRepository.GetAllAsync();
+
+                return registrations.Select(i => new RegistrationReturnDto
+                {
+                    Id = i.Id,
+                    Name = i.Name
+                }).ToList();
             }
         }
 

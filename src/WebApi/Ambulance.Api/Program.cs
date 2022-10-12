@@ -1,4 +1,6 @@
+using Ambulance.Api.Controllers;
 using Application;
+using Domain.Entities;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
+
+
 
 var app = builder.Build();
 

@@ -54,10 +54,10 @@ namespace Persistence.Data
                {
                    Id = 1,
                    IsActive = 1,
-                   Birth = DateTime.Parse("6/15/2008 "),
+                   Birth = DateTime.Parse("6/15/2008"),
                    CarId = 1,
                    DiagnosId = 1,
-                   InsertDate = DateTime.Parse("6/15/2008 "),
+                   InsertDate = DateTime.Parse("6/15/2008"),
                    MedicalWorkerId = 1,
                    Name = "Ramil",
                    Surname = "Sheydayev",

@@ -1,5 +1,6 @@
 ﻿using Application.Dto;
 using Application.Interfaces.Repository;
+using AutoMapper;
 using MediatR;
 using MediatR.Pipeline;
 using System;
@@ -18,21 +19,21 @@ namespace Application.Features.Queries.GetAllRegistrations
         {
 
             private readonly IRegistrationRepository registrationRepository;
+            private readonly IMapper mapper;
 
-            public GetAllRegistrationsQueryHandler(IRegistrationRepository registrationRepository)
+            public GetAllRegistrationsQueryHandler(IRegistrationRepository registrationRepository, IMapper mapper)
             {
                 this.registrationRepository = registrationRepository;
+                this.mapper = mapper;
             }
 
             public async Task<List<RegistrationReturnDto>> Handle(GetAllRegistrationsQuery request, CancellationToken cancellationToken)
             {
                 var registrations = await registrationRepository.GetAllAsync();
 
-                return registrations.Select(i => new RegistrationReturnDto
-                {
-                    Id = i.Id,
-                    Name = i.Name
-                }).ToList();
+                var registrationsReturn = mapper.Map<List<RegistrationReturnDto>>(registrations);
+
+                return registrationsReturn;
             }
         }
 

@@ -11,10 +11,10 @@ namespace Ambulance.Api.Controllers
     public class ApiController : ControllerBase
     {
         private readonly IMediator mediator;
-
         public ApiController(IMediator mediator)
         {
             this.mediator = mediator;
+                
         }
 
 
@@ -22,8 +22,9 @@ namespace Ambulance.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var query = new GetAllRegistrationsQuery();
+            var response = await mediator.Send(query);
 
-            return Ok(await mediator.Send(query));
+            return Ok(response);
         }
     }
 }
